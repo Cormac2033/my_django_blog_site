@@ -1,16 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>CMG Blog Detail</title>
-</head>
-<body>
+{% extends 'blog/base.html' %}
+
+{% block content %}
 {% if post.published_date %}
     <div>
         {{ post.published_date }}
     </div>
-{% endif %}
-<h1>{{ post.title }}</h1>
-<p>{{ post.text|linebreaksbr }}</p>
-</body>
-</html>
+    {% endif %}
+    <h1>{{ post.title }}</h1>
+    <p>{{ post.text|linebreaksbr }}</p>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% load static %} <-- Was 'load staticfiles' but did not work -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CMG Blog</title>
+    <!--This is a comment. adding Bootstrap-->
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata&display=swap" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+<div class="page-header">
+    <h1><a href="{% url 'post_list' %}">Cormac's Blog</a></h1>
+</div>
+<div class="content container">
+    <div class="row">
+        <div class="col-md-8"><!--Can add Flexbox here-->
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
