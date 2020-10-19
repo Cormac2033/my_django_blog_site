@@ -50,3 +50,15 @@ h1, h2, h3, h4 {
 .post-form-blog .btn-success {
     float: right;
 }
+
+/* To keep the blue hover color change for top-menu below type this
+.top-menu {
+
+*/
+
+.top-menu, .top-menu:hover {
+    color: #ffffff;
+    float: right;
+    font-size: 26pt;
+    margin-right: 20px;
+}
