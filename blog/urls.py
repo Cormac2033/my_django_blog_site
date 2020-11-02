@@ -30,6 +30,10 @@ urlpatterns = [
     # gra-productions.com/2/publish --> online
     path('post/<int:pk>/publish/', views.post_publish, name='post_publish'),
 
+    # 127.0.0.1.8000/post/2/comment --> local
+    # gra-productions.com/post/2/comment --> online
+    path('post/<int:pk>/comment/', views.add_comment_to_post, name='add_comment_to_post'),
+
     # Below from CP PYP Mod 13 pt 11 this has been updated...
     # path('accounts/login/', auth_views.login, name='login'),
     # Alternative in Django docs...
@@ -37,5 +41,5 @@ urlpatterns = [
 
     # 127.0.0.1.8000/accounts/login --> local
     # gra-productions.com/accounts/login --> online
-    # moved to file my_ path('accounts/login/', auth_views.LoginView.as_view(), name='login'),
+    # moved to file my_site/urls.py - path('accounts/login/', auth_views.LoginView.as_view(), name='login'),
 ]

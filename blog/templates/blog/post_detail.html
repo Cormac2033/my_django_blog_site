@@ -12,19 +12,38 @@
 
         {% else %}
             <a href="{% url 'post_publish' pk=post.pk %}" class="btn btn-warning">Publish</a>
-
         {% endif %}
 
         {% if user.is_authenticated %}
             <a href="{% url 'post_new' %}" class="top-menu"><i class="fas fa-folder-plus fa-2x"></i></a>
         {% endif %}
 
-        <h1>{{ post.title }}</h1>
-        <p>{{ post.text|linebreaksbr }}</p>
-
         {% if user.is_authenticated %}
-            <a href="{% url 'post_edit' pk=post.pk %}"><button type="submit" class="btn btn-warning">Edit</button></a>
+            <a href="{% url 'post_edit' pk=post.pk %}">
+                <button type="submit" class="btn btn-warning">Edit</button>
+            </a>
         {% endif %}
 
+        <h1>{{ post.title }}</h1>
+        <p>{{ post.text|linebreaksbr }}</p>
     </div>
+
+    <hr>
+
+    <a href="{% url 'add_comment_to_post' pk=post.pk %}" class="btn btn-warning">Add Comment</a>
+    <br>
+    <br>
+    {% for comment in post.comments.all %}
+        <div class="comment">
+            <div class="date">
+                {{ comment.created_date }}
+            </div>
+
+            <strong>{{ comment.author }}</strong>
+            <p>{{ comment.text }}</p>
+        </div>
+    {% empty %}
+        <p>No comments yet...</p>
+
+    {% endfor %}
 {% endblock %}
