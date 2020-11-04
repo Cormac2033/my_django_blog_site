@@ -13,15 +13,24 @@ class Post(models.Model):
         self.published_date = timezone.now()
         self.save()
 
+    def approved_comments(self):
+        return self.comments.filter(approved=True)
+
     # create a string representation
     def __str__(self):
         return str(self.title) + ' - ' + str(self.author)
+
 
 class Comment(models.Model):
     post = models.ForeignKey('blog.Post', on_delete=models.CASCADE, related_name='comments')
     author = models.CharField(max_length=100)
     text = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
+    approved = models.BooleanField(default=False)
+
+    def approve(self):
+        self.approved = True
+        self.save()
 
     def __str__(self):
         return self.text
